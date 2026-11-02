@@ -214,6 +214,55 @@ h1 {
         animation: none !important;
     }
 }
+
+/* Animated Gradient Text */
+.gradient-text {
+    font-size: clamp(2rem, 9vw, 8rem);
+    font-weight: normal;
+    letter-spacing: -2px;
+
+    background: linear-gradient(
+        110deg,
+        #ffffff 0%,
+        #a99cff 20%,
+        #55e8e9 40%,
+        #ffffff 50%,
+        #a99cff 65%,
+        #55e8e9 85%,
+        #ffffff 100%
+    );
+
+    background-size: 250% auto;
+    background-position: 0% center;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        gradientFlow 5s linear infinite,
+        textGlow 3s ease-in-out infinite alternate;
+}
+
+/* สีเคลื่อนที่ */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 250% center;
+    }
+}
+
+/* แสงฟุ้งรอบตัวอักษร */
+@keyframes textGlow {
+    from {
+        filter: drop-shadow(0 0 8px rgba(139,124,255,0.15));
+    }
+    to {
+        filter: drop-shadow(0 0 25px rgba(84,230,232,0.45));
+    }
+}
 </style>
 </head>
 
@@ -227,7 +276,7 @@ h1 {
             Something is in the works
         </div>
 
-        <h1>...COMING SOON...</h1>
+        <h1 class="gradient-text">...COMING SOON...</h1>
 
         <p class="subtitle">
             Stay tuned. Something great is coming.
