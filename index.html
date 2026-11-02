@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon</title>
+
+<style>
+@font-face {
+    font-family: "FC Savespace";
+    src: url("./FCSavespace.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --bg: #080b12;
+    --accent: #8b7cff;
+    --cyan: #54e6e8;
+    --text: #f4f3ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "FC Savespace", sans-serif;
+    position: relative;
+}
+
+/* Ambient background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 65vmax;
+    height: 65vmax;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(111, 86, 255, 0.16),
+        rgba(54, 210, 226, 0.05) 45%,
+        transparent 70%
+    );
+    filter: blur(35px);
+    animation: ambient 9s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    opacity: 0.15;
+    pointer-events: none;
+    background-image: radial-gradient(#ffffff 0.6px, transparent 0.6px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(transparent, black, transparent);
+}
+
+/* Main */
+.container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+}
+
+.content {
+    animation: appear 1.2s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 15px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 100px;
+    background: rgba(255,255,255,.04);
+    backdrop-filter: blur(12px);
+    color: #b8b5d9;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+    animation: pulse 1.8s infinite;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 9vw, 8rem);
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    white-space: nowrap;
+    background: linear-gradient(
+        110deg,
+        #ffffff 15%,
+        #aaa1ff 50%,
+        #62e6e5 85%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 35px rgba(139,124,255,.2));
+    animation: glow 4s ease-in-out infinite alternate;
+}
+
+.subtitle {
+    margin-top: 25px;
+    color: #77798d;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* Decorative line */
+.line {
+    width: 55px;
+    height: 1px;
+    margin: 35px auto 0;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+}
+
+/* Footer */
+.footer {
+    position: absolute;
+    z-index: 3;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #55596a;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+/* Animations */
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    50% { opacity: .35; }
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 15px rgba(139,124,255,.12)); }
+    to { filter: drop-shadow(0 0 35px rgba(84,230,232,.22)); }
+}
+
+@keyframes ambient {
+    from { transform: translate(-10%, -5%) scale(.9); }
+    to { transform: translate(10%, 5%) scale(1.1); }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    h1 {
+        font-size: clamp(2rem, 9vw, 3.5rem);
+        letter-spacing: -1px;
+    }
+
+    .status {
+        margin-bottom: 28px;
+        font-size: 9px;
+    }
+
+    .subtitle {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+    <section class="content">
+
+        <div class="status">
+            <span class="status-dot"></span>
+            Something is in the works
+        </div>
+
+        <h1>...coming soon...</h1>
+
+        <p class="subtitle">
+            Stay tuned. Something great is coming.
+        </p>
+
+        <div class="line"></div>
+
+    </section>
+</main>
+
+<footer class="footer">
+    © 2026 — ALL RIGHTS RESERVED
+</footer>
+
+</body>
+</html>
